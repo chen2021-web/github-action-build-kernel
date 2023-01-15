@@ -53,4 +53,5 @@ jobs:
       with:
         name: Image
         path: out/arch/arm64/boot/Image
+        path: out/arch/arm64/boot/Image.gz
       
