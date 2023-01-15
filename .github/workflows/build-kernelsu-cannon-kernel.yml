@@ -51,7 +51,6 @@ jobs:
     - name: Upload Image
       uses: actions/upload-artifact@v3
       with:
-        name: Image
-        path: $GITHUB_WORKSPACE/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image
+        name: Image.gz
         path: $GITHUB_WORKSPACE/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image.gz
       
