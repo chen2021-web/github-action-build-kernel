@@ -1,0 +1,44 @@
+name: Build WSA-5.10.117-Kernel
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - version: 4.14.186
+            arch: "arm64"
+            out_file: "arch/arm64/boot/Image"
+            kernel_make_cmd: "ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu Image"
+            make_config: "cannon_defconfig"
+
+    name: Build cannon_Kernelsu_kernel-${{ matrix.version }}
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: install dependencies
+      run: |
+        sudo apt install gcc-aarch64-linux-gnu
+        sudo apt install gcc-arm-linux-gnueabi
+        wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+        echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main" | sudo tee -a /etc/apt/sources.list
+        sudo apt-get update -y
+        sudo apt install clang-12 llvm-12 -y
+        apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
+
+    - name: Download kernel source and kernel su 
+      run: |
+        cd $GITHUB_WORKSPACE
+        git clone https://github.com/xiaomi-mt6853-devs/android_kernel_xiaomi_cannon.git
+        cd android_kernel_xiaomi_cannon
+        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+    
+    - name: Build Kernel
+      working-directory: android_kernel_xiaomi_cannon
+      run: |
+       export ARCH=arm64
+       export SUBARCH=arm64
+       make O=out CC=clang-12 cannon_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+       make O=out CC=clang-12 -j8 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+      
