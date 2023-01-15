@@ -48,16 +48,15 @@ jobs:
        export SUBARCH=arm64
        make O=out CC=clang-12 cannon_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
        make O=out CC=clang-12 -j8 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-    -name: check the artifact
-     run: |
-     cd /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/
-     ls -al
+    - name: check
+      run: |
+       cd /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/
+       ls
     - name: Upload Image
       uses: actions/upload-artifact@v3
       with:
         name: Image.gz
         path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image.gz
         name: Image
-        path:/home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image
-
+        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image
       
