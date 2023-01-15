@@ -25,10 +25,11 @@ jobs:
         echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main" | sudo tee -a /etc/apt/sources.list
         sudo apt-get update -y
         sudo apt install clang-12 llvm-12 -y
-        apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
+        sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
     - name: Download kernel source and kernel su 
       run: |
+        sudo -i
         cd $GITHUB_WORKSPACE
         git clone https://github.com/xiaomi-mt6853-devs/android_kernel_xiaomi_cannon.git
         cd android_kernel_xiaomi_cannon
@@ -42,6 +43,7 @@ jobs:
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_cannon
       run: |
+       sudo -i
        export ARCH=arm64
        export SUBARCH=arm64
        make O=out CC=clang-12 cannon_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
