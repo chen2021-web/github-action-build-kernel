@@ -48,4 +48,9 @@ jobs:
        export SUBARCH=arm64
        make O=out CC=clang-12 cannon_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
        make O=out CC=clang-12 -j8 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+    - name: Upload Image
+      uses: actions/upload-artifact@v3
+      with:
+        name: Image
+        path: out/arch/arm64/boot/Image
       
