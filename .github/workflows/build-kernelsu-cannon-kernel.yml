@@ -22,12 +22,9 @@ jobs:
         sudo apt install gcc-aarch64-linux-gnu
         sudo apt install gcc-arm-linux-gnueabi
         wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -   
-        # 添加llvm源的签名使apt信任
         echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main" | sudo tee -a /etc/apt/sources.list  
-        #添加llvm源，这里添加的是12版本，想要添加别的版本自行替换数字
         sudo apt-get update -y 
-        sudo apt install clang-12 llvm-12 -y  
-        #添加完后apt才可找到包
+        sudo apt install clang-12 llvm-12 -y
         sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
     - name: Download kernel source and kernel su 
