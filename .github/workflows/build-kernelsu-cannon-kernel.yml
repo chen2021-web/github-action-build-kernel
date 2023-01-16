@@ -22,7 +22,7 @@ jobs:
         sudo apt install gcc-aarch64-linux-gnu
         sudo apt install gcc-arm-linux-gnueabi
         wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -   
-        #添加llvm源的签名使apt信任
+        # 添加llvm源的签名使apt信任
         echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main" | sudo tee -a /etc/apt/sources.list  
         #添加llvm源，这里添加的是12版本，想要添加别的版本自行替换数字
         sudo apt-get update -y 
