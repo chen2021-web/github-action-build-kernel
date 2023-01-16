@@ -22,9 +22,9 @@ jobs:
         sudo apt install gcc-aarch64-linux-gnu
         sudo apt install gcc-arm-linux-gnueabi
         sudo apt-get update -y 
-        sudo apt install gcc-7 binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
+        sudo apt install gcc-8 binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
-    - name: Download kernel source and kernel su 
+    - name: Download kernel source
       run: |
         sudo -i
         cd $GITHUB_WORKSPACE
@@ -37,8 +37,8 @@ jobs:
        sudo -i
        export ARCH=arm64
        export SUBARCH=arm64
-       make O=out CC=gcc-7 phenix_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-       make O=out CC=gcc-7 -j8 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+       make O=out CC=gcc-8 phenix_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+       make O=out CC=gcc-8 -j8 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
     - name: check
       run: |
        cd /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_huawei_hi6250/out/arch/arm64/boot/
