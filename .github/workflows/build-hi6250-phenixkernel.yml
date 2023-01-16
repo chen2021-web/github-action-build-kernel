@@ -1,4 +1,4 @@
-name: Build hi6250-phenix-Kernelsu
+name: Build hi6250-phenix
 on:
   workflow_dispatch:
 jobs:
