@@ -52,14 +52,9 @@ jobs:
       run: |
        cd /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/
        ls
-    - name: Upload Image.gz
+    - name: Upload boot directory
       uses: actions/upload-artifact@v3
       with:
-        name: Image.gz
-        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image.gz
-    - name: Upload Image
-      uses: actions/upload-artifact@v3
-      with:
-        name: Image
-        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image
+        name: boot
+        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot
       
