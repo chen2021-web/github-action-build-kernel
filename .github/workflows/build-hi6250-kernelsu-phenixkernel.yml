@@ -28,7 +28,7 @@ jobs:
         cd $GITHUB_WORKSPACE
         git clone -b phenix-1.0 https://github.com/chen2021-web/android_kernel_huawei_hi6250.git
         cd android_kernel_huawei_hi6250
-        curl -LSs "https://raw.githubusercontent.com/chen2021-wen/KernelSU/main/kernel/setup.sh" | bash -
+        curl -LSs "https://raw.githubusercontent.com/chen2021-web/KernelSU/main/kernel/setup.sh" | bash -
         echo "CONFIG_KPROBES=y" >>arch/arm64/configs/phenix_defconfig
         echo "CONFIG_KVM=y"  >>arch/arm64/configs/phenix_defconfig
 
