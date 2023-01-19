@@ -38,6 +38,8 @@ jobs:
         echo "CONFIG_KPROBES_ON_FTRACES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_KVM=y"  >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_VIRTUALIZATION=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_DEBUG_SECTION_MISMATCH=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_SECTION_MISMATCH_WARN_ONLY=y" >>arch/arm64/configs/cannon_defconfig
 
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_cannon
