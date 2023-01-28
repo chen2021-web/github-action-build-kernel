@@ -3,15 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    strategy:
-      matrix:
-        include:
-          - version: 4.14.186
-            arch: "arm64"
-            out_file: "arch/arm64/boot/Image"
-            kernel_make_cmd: "ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu Image"
-            make_config: "cannon_defconfig"
-
+   
     name: Build cannon_Kernelsu_kernel-${{ matrix.version }}
     runs-on: ubuntu-18.04
     steps:
@@ -56,4 +48,8 @@ jobs:
       with:
         name: boot
         path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot
-      
+    - name: Upload Image.gz directory
+      uses: actions/upload-artifact@v3
+      with:
+        name: Image.gz
+        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image.gz
