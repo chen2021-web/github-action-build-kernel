@@ -13,10 +13,7 @@ jobs:
       run: |
         sudo apt install gcc-7 gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi
         sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git -y
-        cd $GITHUB_WORKSPACE
-        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-10.0.0_r47 --depth=1 --single-branch --no-tags ~/aarch64-linux-android-4.9
-        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-10.0.0_r47 --depth=1 --single-branch --no-tags ~/arm-linux-androideabi-4.9
-
+        
     - name: Download kernel source
       run: |
         sudo -i
