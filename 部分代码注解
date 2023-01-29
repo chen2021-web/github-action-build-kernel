@@ -1,3 +1,4 @@
+build-kernelsu-cannon-kernel.yml部分：
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -   
         # 添加llvm源的签名使apt信任
         echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main" | sudo tee -a /etc/apt/sources.list  
