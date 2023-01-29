@@ -3,14 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    strategy:
-      matrix:
-        include:
-          - version: 4.9.319
-            arch: "arm64"
-            out_file: "arch/arm64/boot/Image"
-            kernel_make_cmd: "ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu Image"
-            make_config: "phenix_defconfig"
 
     name: Build hi6250_Kernelsu_phenixkernel-${{ matrix.version }}
     runs-on: ubuntu-18.04
@@ -28,10 +20,8 @@ jobs:
         cd $GITHUB_WORKSPACE
         git clone -b phenix-1.0 https://github.com/chen2021-web/android_kernel_huawei_hi6250.git
         cd android_kernel_huawei_hi6250
-        curl -LSs "https://raw.githubusercontent.com/chen2021-web/KernelSU/main/kernel/setup.sh" | bash -
-        echo "CONFIG_KPROBES=y" >>arch/arm64/configs/phenix_defconfig
-        echo "CONFIG_KVM=y"  >>arch/arm64/configs/phenix_defconfig
-
+        curl -LSs "https://raw.githubusercontent.com/ookiineko/KernelSU/main/kernel/setup.sh" | bash -
+        
     - name: Build Kernel
       working-directory: android_kernel_huawei_hi6250
       run: |
