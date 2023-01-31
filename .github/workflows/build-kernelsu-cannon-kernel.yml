@@ -43,13 +43,24 @@ jobs:
       run: |
        cd /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/
        ls
+    - name: pack Image.gz with Anykernel3
+      run: |
+        cd  $GITHUB_WORKSPACE
+        git clone https://github.com/chen2021-web/AnyKernel3_cannon.git
+        cd AnyKernel3_cannon
+        cp ../android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image.gz ./
     - name: Upload boot directory
       uses: actions/upload-artifact@v3
       with:
         name: boot
         path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot
-    - name: Upload Image.gz directory
+    - name: Upload Image.gz file
       uses: actions/upload-artifact@v3
       with:
         name: Image.gz
         path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image.gz
+    - name: Upload Anykernel3_cannon
+      uses: actions/upload-artifact@v3
+      with:
+        name: Anykernel3_cannon
+        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/AnyKernel3_cannon
