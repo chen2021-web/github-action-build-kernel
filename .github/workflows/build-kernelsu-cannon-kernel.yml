@@ -1,4 +1,4 @@
-name: Build cannon-Kernelsu
+name: Build cannon-Kernelsu-lineage19.1
 on:
   workflow_dispatch:
 jobs:
@@ -23,8 +23,8 @@ jobs:
       run: |
         sudo -i
         cd $GITHUB_WORKSPACE
-        git clone https://github.com/xiaomi-mt6853-devs/android_kernel_xiaomi_cannon.git
-        cd android_kernel_xiaomi_cannon
+        git clone -b lineage-19.1 https://github.com/xiaomi-mt6853-devs/android_kernel_xiaomi_cannon.git
+        cd android_kernel_xiaomi_cannon.git
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
         echo "CONFIG_KPROBES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_KPROBES_ON_FTRACES=y" >>arch/arm64/configs/cannon_defconfig
