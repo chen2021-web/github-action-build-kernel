@@ -5,7 +5,7 @@ jobs:
   build:
 
     name: Build hi6250_Kernelsu_phenixkernel-${{ matrix.version }}
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     
