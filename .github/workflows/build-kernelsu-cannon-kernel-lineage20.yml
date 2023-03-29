@@ -11,9 +11,7 @@ jobs:
     
     - name: install dependencies
       run: |
-        wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -   
-        echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main" | sudo tee -a /etc/apt/sources.list  
-        sudo apt-get update -y 
+         sudo apt-get update -y 
         sudo apt install clang-14 llvm-14 gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi -y
         sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
