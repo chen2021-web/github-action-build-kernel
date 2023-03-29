@@ -11,11 +11,22 @@ jobs:
     
     - name: install dependencies
       run: |
-        wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -   
-        echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main" | sudo tee -a /etc/apt/sources.list  
-        sudo apt-get update -y 
-        sudo apt install clang-14 llvm-14 gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi -y
-        sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
+        sudo apt update
+        sudo apt install -y --no-install-recommends bc bison build-essential ca-certificates flex git gnupg libelf-dev libssl-dev lsb-release software-properties-common wget libncurses-dev binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu nuget
+        export LLVM_VERSION=14
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh $LLVM_VERSION
+        rm ./llvm.sh
+        sudo ln -s --force /usr/bin/clang-$LLVM_VERSION /usr/bin/clang
+        sudo ln -s --force /usr/bin/ld.lld-$LLVM_VERSION /usr/bin/ld.lld
+        sudo ln -s --force /usr/bin/llvm-objdump-$LLVM_VERSION /usr/bin/llvm-objdump
+        sudo ln -s --force /usr/bin/llvm-ar-$LLVM_VERSION /usr/bin/llvm-ar
+        sudo ln -s --force /usr/bin/llvm-nm-$LLVM_VERSION /usr/bin/llvm-nm
+        sudo ln -s --force /usr/bin/llvm-strip-$LLVM_VERSION /usr/bin/llvm-strip
+        sudo ln -s --force /usr/bin/llvm-objcopy-$LLVM_VERSION /usr/bin/llvm-objcopy
+        sudo ln -s --force /usr/bin/llvm-readelf-$LLVM_VERSION /usr/bin/llvm-readelf
+        sudo ln -s --force /usr/bin/clang++-$LLVM_VERSION /usr/bin/clang++
 
     - name: Download kernel source and kernel su 
       run: |
