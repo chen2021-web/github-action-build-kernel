@@ -13,10 +13,15 @@ jobs:
       run: |
          sudo apt install gcc-aarch64-linux-gnu
          sudo apt install gcc-arm-linux-gnueabi
-         wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -   
-         echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-14 main" | sudo tee -a /etc/apt/sources.list  
+         sudo apt install gcc-multilib
+         git clone -b release/14.x https://github.com/llvm/llvm-project.git
+         cd llvm-project
+         cmake -S llvm -B build_release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/llvm -G "Ninja" -DLLVM_USE_LINKER="gold" -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb" -DLLVM_ENABLE_RUNTIMES="libc;compiler-rt;libcxx;libcxxabi;libunwind"
+         cd build_release
+         ninja
+         sudo ninja install
          sudo apt-get update -y 
-         sudo apt install clang-14 llvm-14 -y
+         sudo apt install clang-14  -y
          sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
     - name: Download kernel source and kernel su 
