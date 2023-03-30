@@ -9,20 +9,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Install LLVM and Clang
+      uses: KyleMayes/install-llvm-action@v1
+      with:
+         version: "14.0"
+    
     - name: install dependencies
       run: |
          sudo apt install gcc-aarch64-linux-gnu
          sudo apt install gcc-arm-linux-gnueabi
-         sudo apt install gcc-multilib  ninja-build
-         git clone -b release/14.x https://github.com/llvm/llvm-project.git
-         cd llvm-project
-         mkdir build
-         cd build
-         cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON ../llvm -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;openmp;lldb;lld"
-         make
-         make install
          sudo apt-get update -y 
-         sudo apt install clang-14  -y
          sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
     - name: Download kernel source and kernel su 
