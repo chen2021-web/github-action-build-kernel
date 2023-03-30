@@ -13,7 +13,7 @@ jobs:
       run: |
          sudo apt install gcc-aarch64-linux-gnu
          sudo apt install gcc-arm-linux-gnueabi
-         sudo apt install gcc-multilib
+         sudo apt install gcc-multilib  ninja-build
          git clone -b release/14.x https://github.com/llvm/llvm-project.git
          cd llvm-project
          cmake -S llvm -B build_release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/llvm -G "Ninja" -DLLVM_USE_LINKER="gold" -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb" -DLLVM_ENABLE_RUNTIMES="libc;compiler-rt;libcxx;libcxxabi;libunwind"
