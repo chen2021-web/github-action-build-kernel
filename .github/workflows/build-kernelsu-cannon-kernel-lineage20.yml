@@ -16,10 +16,11 @@ jobs:
          sudo apt install gcc-multilib  ninja-build
          git clone -b release/14.x https://github.com/llvm/llvm-project.git
          cd llvm-project
-         cmake -S llvm -B build_release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/llvm -G "Ninja" -DLLVM_USE_LINKER="gold" -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb" -DLLVM_ENABLE_RUNTIMES="libc;compiler-rt;libcxx;libcxxabi;libunwind"
-         cd build_release
-         ninja
-         sudo ninja install
+         mkdir build
+         cd build
+         cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON ../llvm -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;openmp;lldb;lld"
+         make
+         make install
          sudo apt-get update -y 
          sudo apt install clang-14  -y
          sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
