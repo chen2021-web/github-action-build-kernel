@@ -1,0 +1,67 @@
+name: Build-cannon-Kernelsu-debug-lineage20
+on:
+  workflow_dispatch:
+jobs:
+  build:
+   
+    name: Build cannon_Kernelsu_kernel-${{ matrix.version }}
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install LLVM and Clang
+      uses: KyleMayes/install-llvm-action@v1
+      with:
+         version: "14.0"
+    
+    - name: install dependencies
+      run: |
+         sudo apt install gcc-aarch64-linux-gnu
+         sudo apt install gcc-arm-linux-gnueabi
+         sudo apt-get update -y 
+         sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
+
+    - name: Download kernel source and kernel su 
+      run: |
+        sudo -i
+        cd $GITHUB_WORKSPACE
+        git clone -b lineage-20 https://github.com/xiaomi-mt6853-devs/android_kernel_xiaomi_cannon.git
+        cd android_kernel_xiaomi_cannon
+        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+        echo "CONFIG_KPROBES=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_KPROBES_ON_FTRACES=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_KSU_DEBUG=y" >>arch/arm64/configs/cannon_defconfig  
+       
+    - name: Build Kernel
+      working-directory: android_kernel_xiaomi_cannon
+      run: |
+       sudo -i
+       export ARCH=arm64
+       export SUBARCH=arm64
+       make O=out CC=clang-14 cannon_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+       make O=out CC=clang-14 -j$(nproc --all) ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+    - name: check
+      run: |
+       cd /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/
+       ls
+    - name: pack Image.gz with Anykernel3
+      run: |
+        cd  $GITHUB_WORKSPACE
+        git clone https://github.com/chen2021-web/AnyKernel3_cannon.git
+        cd AnyKernel3_cannon
+        cp ../android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image.gz ./
+    - name: Upload boot directory
+      uses: actions/upload-artifact@v3
+      with:
+        name: boot
+        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot
+    - name: Upload Image.gz file
+      uses: actions/upload-artifact@v3
+      with:
+        name: Image.gz
+        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_cannon/out/arch/arm64/boot/Image.gz
+    - name: Upload Anykernel3_cannon
+      uses: actions/upload-artifact@v3
+      with:
+        name: Anykernel3_cannon
+        path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/AnyKernel3_cannon
