@@ -25,41 +25,10 @@ jobs:
       run: |
         sudo -i
         cd $GITHUB_WORKSPACE
-        git clone -b lineage-20 https://github.com/xiaomi-mt6853-devs/android_kernel_xiaomi_cannon.git
+        git clone -b lineage-20 https://github.com/chen2021-web/android_kernel_xiaomi_cannon.git
         cd android_kernel_xiaomi_cannon
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
-        echo "CONFIG_KPROBES=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_KPROBES_ON_FTRACES=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_IPC_NS=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_CGROUP_DEVICE=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_BRIDGE_NETFILTER=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_NETFILTER_XT_MATCH_ADDRTYPE=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_NETFILTER_XT_MATCH_IPVS=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_POSIX_MQUEUE=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_USER_NS=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_CGROUP_PIDS=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_BLK_DEV_THROTTLING=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_CGROUP_PERF=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_CGROUP_HUGETLB=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_NET_CLS_CGROUP=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_CGROUP_NET_PRIO=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_CFS_BANDWIDTH=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_RT_GROUP_SCHED=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_IP_VS=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_IP_VS_NFCT=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_IP_VS_PROTO_TCP=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_IP_VS_PROTO_UDP=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_IP_VS_RR=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_SECURITY_APPARMOR=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_VXLAN=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_BRIDGE_VLAN_FILTERING=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_IPVLAN=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_MACVLAN=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_AUFS_FS=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_BTRFS_FS=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_BTRFS_FS_POSIX_ACL=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_DM_THIN_PROVISIONING=y" >>arch/arm64/configs/cannon_defconfig
-
+   
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_cannon
       run: |
