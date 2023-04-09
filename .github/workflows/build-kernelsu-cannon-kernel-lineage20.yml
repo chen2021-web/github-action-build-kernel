@@ -59,7 +59,7 @@ jobs:
         echo "CONFIG_BTRFS_FS=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_BTRFS_FS_POSIX_ACL=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_DM_THIN_PROVISIONING=y" >>arch/arm64/configs/cannon_defconfig
-
+        echo "CONFIG_KVM=y" >>arch/arm64/configs/cannon_defconfig
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_cannon
       run: |
