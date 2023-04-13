@@ -27,6 +27,7 @@ jobs:
         cd $GITHUB_WORKSPACE
         git clone -b lineage-20 https://github.com/xiaomi-mt6853-devs/android_kernel_xiaomi_cannon.git
         cd android_kernel_xiaomi_cannon
+        set -u
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
         echo "CONFIG_KPROBES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_KPROBE_EVENTS=y" >>arch/arm64/configs/cannon_defconfig
