@@ -1,11 +1,11 @@
-name: Build hi6250-phenix-kernelsu
+name: Build hi6250-phenix-KernelSu
 on:
   workflow_dispatch:
 jobs:
   build:
 
     name: Build hi6250_Kernelsu_phenixkernel-${{ matrix.version }}
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v3
     
@@ -20,7 +20,7 @@ jobs:
         cd $GITHUB_WORKSPACE
         git clone -b phenix-1.0 https://github.com/chen2021-web/android_kernel_huawei_hi6250.git
         cd android_kernel_huawei_hi6250
-        curl -LSs "https://raw.githubusercontent.com/chen2021-web/KernelSU/main/kernel/setup.sh" | bash -
+        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
         
     - name: Build Kernel
       working-directory: android_kernel_huawei_hi6250
