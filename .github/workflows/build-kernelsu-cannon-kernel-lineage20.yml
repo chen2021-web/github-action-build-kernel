@@ -248,6 +248,8 @@ jobs:
         echo "CONFIG_VXLAN=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_XFRM_ALGO=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_XFRM_USER=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_HUGETLB_PAGE=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CGROUP_HUGETLB=y" >>arch/arm64/configs/cannon_defconfig
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_cannon
       run: |
