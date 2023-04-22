@@ -30,13 +30,17 @@ jobs:
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
         echo "CONFIG_AUFS_FS=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_BLK_CGROUP=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_BLK_DEV_DM=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_BLK_DEV_THROTTLING=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_BRIDGE=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_BRIDGE_NETFILTER=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_BRIDGE_VLAN_FILTERING=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_BTRFS_FS=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_BTRFS_FS_POSIX_ACL=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CFQ_GROUP_IOSCHED=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_CFS_BANDWIDTH=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_CGROUPS=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CGROUP_BPF=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_CGROUP_CPUACCT=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_CGROUP_DEVICE=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_CGROUP_FREEZER=y" >>arch/arm64/configs/cannon_defconfig
@@ -47,8 +51,18 @@ jobs:
         echo "CONFIG_CGROUP_RDMA=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_CGROUP_SCHED=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_CPUSETS=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CRYPTO=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CRYPTO_AEAD=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CRYPTO_GCM=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CRYPTO_GHASH=y CONFIG_XFRM=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CRYPTO_SEQIV=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_DEBUG_BLK_CGROUP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_DM_THIN_PROVISIONING=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_DUMMY=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_EXT4_FS=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_EXT4_FS_POSIX_ACL=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_EXT4_FS_SECURITY=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_FAIR_GROUP_SCHED=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_INET6_AH=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_INET6_ESP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_INET6_ESP_OFFLOAD=y" >>arch/arm64/configs/cannon_defconfig
@@ -62,6 +76,8 @@ jobs:
         echo "CONFIG_INET_IPCOMP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_INET_RAW_DIAG=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_INET_UDP_DIAG=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_INET_XFRM_MODE_TRANSPORT=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_IOSCHED_CFQ=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP6_NF_FILTER=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP6_NF_IPTABLES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP6_NF_MANGLE=y" >>arch/arm64/configs/cannon_defconfig
@@ -109,8 +125,11 @@ jobs:
         echo "CONFIG_IP_NF_MATCH_ECN=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_NF_MATCH_RPFILTER=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_NF_MATCH_TTL=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_IP_NF_NAT=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_NF_RAW=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_NF_TARGET_ECN=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_IP_NF_TARGET_MASQUERADE=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_IP_NF_TARGET_REDIRECT=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_NF_TARGET_REJECT=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_NF_TARGET_TTL=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_PIMSM_V1=y" >>arch/arm64/configs/cannon_defconfig
@@ -127,19 +146,24 @@ jobs:
         echo "CONFIG_IP_VS_PROTO_TCP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_VS_PROTO_UDP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_IP_VS_RR=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_KEYS=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_KPROBES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_KPROBES_ON_FTRACES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_KVM=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_MACVLAN=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_MEMCG=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_MEMCG_SWAP=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_MEMCG_SWAP_ENABLED=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NAMESPACES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NET=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETDEVICES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETFILTER=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NETFILTER_XT_MARK=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETFILTER_XT_MATCH_ADDRTYPE=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETFILTER_XT_MATCH_BPF=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETFILTER_XT_MATCH_CGROUP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETFILTER_XT_MATCH_COMMENT=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NETFILTER_XT_MATCH_CONNTRACK=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETFILTER_XT_MATCH_CPU=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETFILTER_XT_MATCH_DCCP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NETFILTER_XT_MATCH_DEVGROUP=y" >>arch/arm64/configs/cannon_defconfig
@@ -195,17 +219,35 @@ jobs:
         echo "CONFIG_NET_IPIP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NET_IPVTI=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NET_L3_MASTER_DEV=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NET_NS=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NF_CONNTRACK_FTP=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NF_CONNTRACK_TFTP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NF_LOG_ARP=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NF_NAT=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NF_NAT_FTP=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NF_NAT_IPV4=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NF_NAT_NEEDED=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_NF_NAT_TFTP=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NF_SOCKET_IPV4=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_NF_SOCKET_IPV6=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_OVERLAY_FS=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_PID_NS=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_POSIX_MQUEUE=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_RT_GROUP_SCHED=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_SECCOMP=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_SECCOMP_FILTER=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_SECURITY_APPARMOR=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_SECURITY_SELINUX=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_SYN_COOKIES=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_TCP_CONG_ADVANCED=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_TCP_MD5SIG=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_USER_NS=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_UTS_NS=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_VETH=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_VXLAN=y CONFIG_BRIDGE_VLAN_FILTERING=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_VXLAN=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_XFRM_ALGO=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_XFRM_USER=y" >>arch/arm64/configs/cannon_defconfig
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_cannon
       run: |
