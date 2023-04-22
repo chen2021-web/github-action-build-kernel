@@ -69,12 +69,9 @@ jobs:
         echo "CONFIG_CGROUP_FREEZER=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_CPUSETS=y" >>arch/arm64/configs/cannon_defconfig
         echo "CONFIG_DEBUG_BLK_CGROUP=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_NETDEVICES=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_NET_CORE=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_INET=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_IPV6=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_NETFILTER=y" >>arch/arm64/configs/cannon_defconfig
-        echo "CONFIG_NET_L3_MASTER_DEV=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CGROUP_CPUACCT=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_CFS_BANDWIDTH=y" >>arch/arm64/configs/cannon_defconfig
+        echo "CONFIG_RT_GROUP_SCHED=y" >>arch/arm64/configs/cannon_defconfig
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_cannon
       run: |
