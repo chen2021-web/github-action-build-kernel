@@ -11,7 +11,7 @@ jobs:
     
     - name: install dependencies
       run: |
-        sudo apt install gcc-7 gcc-7-aarch64-linux-gnu 
+        sudo apt install gcc gcc-aarch64-linux-gnu 
         sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git -y
 
     - name: Download kernel source
