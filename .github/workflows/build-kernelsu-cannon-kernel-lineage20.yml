@@ -21,12 +21,12 @@ jobs:
 
     - name: install dependencies
       run: |
-         sudo apt-get update -y 
-         sudo apt-get upgrade -y
-         sudo apt-get install gcc-aarch64-linux-gnu
-         sudo apt-get install gcc-arm-linux-gnueabi
-         sudo apt-get  python2 dh-python python-is-python3
-         sudo apt-get install binutils make  libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
+         sudo apt update -y 
+         sudo apt upgrade -y
+         sudo apt install gcc-aarch64-linux-gnu
+         sudo apt install gcc-arm-linux-gnueabi
+         sudo apt install  python2 dh-python python-is-python3
+         sudo apt install binutils make  libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
     - name: Download kernel source and kernel su 
       run: |
