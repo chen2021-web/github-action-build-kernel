@@ -5,7 +5,7 @@ jobs:
   build:
    
     name: Build cannon_Kernelsu_kernel-${{ matrix.version }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     
@@ -17,13 +17,15 @@ jobs:
       uses: daycat/cloudflare-warp-actions@main
 
      
-    
+
     - name: install dependencies
       run: |
-         sudo apt install gcc-aarch64-linux-gnu
-         sudo apt install gcc-arm-linux-gnueabi
          sudo apt-get update -y 
-         sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
+         sudo apt-get upgrade -y
+         sudo apt-get install gcc-aarch64-linux-gnu
+         sudo apt-get install gcc-arm-linux-gnueabi
+
+         sudo apt-get install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
     - name: Download kernel source and kernel su 
       run: |
