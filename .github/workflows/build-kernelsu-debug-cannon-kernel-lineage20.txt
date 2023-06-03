@@ -1,4 +1,4 @@
-name: Build-cannon-Kernelsu-lineage20
+name: Build-cannon-Kernelsu-debug-lineage20
 on:
   workflow_dispatch:
 jobs:
