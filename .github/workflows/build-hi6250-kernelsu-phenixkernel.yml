@@ -5,14 +5,14 @@ jobs:
   build:
 
     name: Build hi6250_Kernelsu_phenixkernel-${{ matrix.version }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     
     - name: install dependencies
       run: |
         sudo apt install gcc gcc-aarch64-linux-gnu 
-        sudo apt install binutils make python libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git -y
+        sudo apt install binutils make python2 dh-python python-is-python3 libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git -y
 
     - name: Download kernel source
       run: |
