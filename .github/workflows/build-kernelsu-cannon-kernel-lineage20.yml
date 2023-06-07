@@ -22,7 +22,7 @@ jobs:
     - name: install dependencies
       run: |
          sudo apt update -y 
-         sudo apt upgrade -y
+        
          sudo apt install gcc-aarch64-linux-gnu
          sudo apt install gcc-arm-linux-gnueabi
          sudo apt install  python2 dh-python python-is-python3
