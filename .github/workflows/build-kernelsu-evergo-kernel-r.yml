@@ -45,6 +45,7 @@ jobs:
        export SUBARCH=arm64
        make O=out CC=clang-14 evergo_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- 
        make O=out CC=clang-14 -j$(nproc --all) ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- 
+    - name: check
       run: |
        cd /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_evergo/out/arch/arm64/boot/
        ls
