@@ -21,7 +21,6 @@ jobs:
          sudo apt update -y 
 
          sudo apt install gcc-aarch64-linux-gnu
-         sudo apt install gcc-arm-linux-gnueabi
          sudo apt install  python2 dh-python python-is-python3
          sudo apt install binutils make  libssl-dev build-essential bc  bison flex unzip libssl-dev ca-certificates xz-utils mkbootimg cpio device-tree-compiler git
 
@@ -44,9 +43,8 @@ jobs:
        sudo -i
        export ARCH=arm64
        export SUBARCH=arm64
-       make O=out CC=clang-14 evergo_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-       make O=out CC=clang-14 -j$(nproc --all) ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-    - name: check
+       make O=out CC=clang-14 evergo_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- 
+       make O=out CC=clang-14 -j$(nproc --all) ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- 
       run: |
        cd /home/runner/work/github-action-build-kernel/github-action-build-kernel/android_kernel_xiaomi_evergo/out/arch/arm64/boot/
        ls
