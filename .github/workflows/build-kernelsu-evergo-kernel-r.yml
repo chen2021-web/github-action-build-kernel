@@ -22,7 +22,7 @@ jobs:
     - name: install dependencies
       run: |
          sudo apt update -y 
-        
+
          sudo apt install gcc-aarch64-linux-gnu
          sudo apt install gcc-arm-linux-gnueabi
          sudo apt install  python2 dh-python python-is-python3
@@ -38,6 +38,7 @@ jobs:
         echo "CONFIG_KPROBES=y" >>arch/arm64/configs/evergo_defconfig
         echo "CONFIG_HAVE_KPROBES=y" >>arch/arm64/configs/evergo_defconfig
         echo "CONFIG_KPROBE_EVENTS=y" >>arch/arm64/configs/evergo_defconfig
+        echo "CONFIG_MODULES=y" >>arch/arm64/configs/evergo_defconfig
    
     - name: Build Kernel
       working-directory: android_kernel_xiaomi_evergo
