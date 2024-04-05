@@ -70,4 +70,4 @@ jobs:
       with:
         name: Anykernel3_cannon
         path: /home/runner/work/github-action-build-kernel/github-action-build-kernel/AnyKernel3_cannon
-ons/upload-artifact@v3
+
