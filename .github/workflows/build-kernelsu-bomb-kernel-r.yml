@@ -43,7 +43,7 @@ jobs:
        sudo -i
        export ARCH=arm64
        export SUBARCH=arm64
-       make O=out CC=clang-14 vendor/bomb_user_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+       make O=out CC=clang-14 defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
        make O=out CC=clang-14 -j$(nproc --all) ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi-
     - name: check
       run: |
