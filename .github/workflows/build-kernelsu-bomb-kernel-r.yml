@@ -38,7 +38,7 @@ jobs:
        
 
     - name: Build Kernel
-      working-directory: android_kernel_xiaomi_cannon
+      working-directory: kernel_redmi_mt6885
       run: |
        sudo -i
        export ARCH=arm64
